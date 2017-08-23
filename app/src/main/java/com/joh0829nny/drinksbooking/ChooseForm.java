@@ -19,7 +19,7 @@ public class ChooseForm extends AppCompatActivity {
     Button select_drink;
     String ice_opt = "";
     String drink_name = "";
-    int select_number;
+
 
 
     @Override
@@ -43,13 +43,14 @@ public class ChooseForm extends AppCompatActivity {
                 dialog_list.setItems(list_item,new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialogInterface,int which){
-                        Toast.makeText(ChooseForm.this,list_item[which], Toast.LENGTH_LONG).show();
-                        select_number = which;
+                        Toast.makeText(ChooseForm.this,list_item[which], Toast.LENGTH_SHORT).show();
+                        drink_name = list_item[which];
 
                     }
                 });
+
                 dialog_list.show();
-                drink_name = list_item[select_number];
+
 
             }
 
@@ -130,14 +131,14 @@ public class ChooseForm extends AppCompatActivity {
                     dialog.setNegativeButton("wrong", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(ChooseForm.this,"我要修改",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChooseForm.this,"我要修改",Toast.LENGTH_SHORT).show();
                         }
                     });
 
                     dialog.setPositiveButton("correct", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int x) {
-                            Toast.makeText(ChooseForm.this,"我確定",Toast.LENGTH_LONG).show();
+                            Toast.makeText(ChooseForm.this,"我確定",Toast.LENGTH_SHORT).show();
 
                             Intent i = new Intent();
                             Bundle b = new Bundle();
@@ -147,12 +148,6 @@ public class ChooseForm extends AppCompatActivity {
                             i.putExtras(b);
                             setResult(101, i);
                             finish();
-                        }
-                    });
-
-                    dialog.setNeutralButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int x) {Toast.makeText(ChooseForm.this,"取消",Toast.LENGTH_LONG).show();
                         }
                     });
                     dialog.show();
